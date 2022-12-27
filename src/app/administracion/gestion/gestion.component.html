@@ -1,0 +1,153 @@
+<div class="row justify-content-md-center justify-content-center mt-3">
+  <div class="card col-11 col-lg-7 p-3 shadow">
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-1 col-2">
+          <button type="button" id="btnRedondo" class="btn btn-primary shadow mx-1" routerLink="/menu"><i class="fas fa-arrow-left"></i></button>
+        </div>
+        <div class="col-lg-11 col-10">
+          <h4 class="card-title">Gestión</h4>
+        </div>
+      </div>
+
+      <hr />
+      <div class="justify-content-md-center mt-3">
+        <div class="container">
+        
+          <div class="row">
+            <div class="col-12 col-lg-6 mt-1">
+              <label class="form-label-sm">buscar nombre</label>
+              <div class="input-group">
+                <input type="text" class="form-control form-control-sm text-center col-lg-8" placeholder="nombre" [(ngModel)]="NombreBuscar" (keyup)="KeyUpNombreBuscar()">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="KeyUpNombreBuscar()"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+
+
+            <div class="col-12 col-lg-6 mt-1">
+              <label class="form-label-sm">estado de solicitud</label>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" (click)="BuscarTodos()" [(ngModel)]="busqueda">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Todos</label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="justify-content-md-center mt-3">
+          <div class="row justify-content-md-center justify-content-center">
+
+            <!--tabla-->
+            <div class="col-12 col-lg-12 mt-3 d-none d-md-block">
+              <div class="table-responsive">
+                <table class="table table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">Fecha</th>
+                      <th scope="col" class="text-center">Consecutivo</th>
+                      <th scope="col" class="text-center">Nombre</th>
+                      <th scope="col" class="text-center">Asunto</th>
+                      <th scope="col" class="text-center">Estado</th>
+                      <th scope="col" class="text-center"><i class="fa-solid fa-gear"></i></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr *ngIf="spinH">
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                    </tr>
+
+
+                    <tr *ngFor="let item of listaHistorialTramites; let i = index;" [ngClass]="item.css">
+                      <td class="text-center">{{item.Fecha | date: 'medium'}}</td>
+                      <td *ngIf="item.Consecutivo==0" class="text-center">{{item.IdTramite}}</td>
+                      <td *ngIf="item.Consecutivo>0" class="text-center"><h5>{{item.Consecutivo}}{{item.Letra}}</h5></td>    
+                      <td class="text-center">{{item.Nombre}}</td>
+                      <td class="text-center">{{item.NombreSolicitud}}</td>
+                      <td class="text-center">{{item.NombreEstado}}</td>
+                      <td class="text-center">
+                        <button type="button" class="btn btn-primary" id="btnt" data-bs-toggle="modal" data-bs-target="#opcion" (click)="Seleccion(item)">
+                          <span *ngIf="spinI" class="spinner-border spinner-border-sm"></span>
+                          <i *ngIf="!spinI" class="fa-solid fa-gear"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!--para movil-->
+            <div class="row justify-content-center mt-3 d-md-none d-flex">
+              <ul *ngIf="spinH" class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="spinner-grow text-primary" role="status">
+                    <span class="visually-hidden"></span>
+                  </div>
+                </li>
+              </ul>
+              <ul class="list-group list-group-flush" *ngFor="let item of listaHistorialTramites; let i = index;">
+                <li *ngIf="!spinH" class="list-group-item">                               
+                  <div class="row">
+                    <button type="button" [ngClass]="item.css2" (click)="Seleccion(item)" data-bs-toggle="modal" data-bs-target="#opcion" aria-current="true">
+                      <div class="row">
+                        <div class="col-2 col-lg-2">
+                          <h2><span *ngIf="spinI" class="spinner-border spinner-border-sm"></span></h2>
+                          <h2><i *ngIf="!spinI" class="fa-solid fa-arrow-pointer" style="color:var(--secondary);"></i></h2>
+                        </div>
+                        <div class="col-10">
+                          <label class="form-check-label" for="flexSwitchCheckDefault"><h5>{{item.NombreSolicitud}}</h5></label>
+                          <p class="h6">Nombre: {{item.Nombre}}</p>
+                          <p class="h6">Estado: {{item.NombreEstado}}</p>
+                          <p class="h6">Fecha: {{item.Fecha | date: 'medium'}}</p>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="class=col-12 col-lg-12 my-2">
+        <div class="btn-group col-12 col-lg-12" role="group">
+          <button type="button" class="btn btn-primary" routerLink="/menu">
+            <i class="fas fa-times"></i> Salir
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--MODAL PARA ACTUALIZAR ESTADO-->
+<div class="modal fade" id="opcion" tabindex="" role="dialog">
+  <div class="modal-sm modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title">Seleccione</h6>
+        <button type="button" class="btn-close" #cerrarModal data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="list-group">
+          <a *ngFor="let list of listEstados;let i = index;" class="list-group-item list-group-item-action list-group-item-light" (click)="actualizarTramite(list)">{{list.NombreEstado}}</a>
+        </div>
+        <div class="list-group">
+          <a class="list-group-item list-group-item-action list-group-item-light" (click)="Imprimir()" data-bs-dismiss="modal">Imprimir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

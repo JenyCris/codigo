@@ -1,0 +1,112 @@
+
+<img class="d-none d-md-block" id="marco" src="../../../assets/images/marco.svg">
+
+
+<img id="circulo1" src="../../../assets/images/circulo1.svg">
+
+<div *ngIf="mostrar" class="row d-flex justify-content-center px-2" id="titulo">
+  <div class="d-flex justify-content-center">
+    <div class="col-md-6">
+
+      <!--para PC-->
+      <div class="row d-none d-md-block">
+        <div class="row">
+          <div class="col-md-2 d-md-flex justify-content-md-end">
+              <img src="../../../assets/images/bandera_redo.svg" class="px-0" id="bandera_m">
+          </div>
+          <div class="col-md-10">
+            <h1 id="titulo_sec">Secretaría de Control Urbano y Vivienda</h1>
+            <h1 id="titulo_al">Alcaldía de Chinácota</h1>
+          </div>
+        </div>
+        
+      </div>
+
+      <!--para movil-->
+      <div class="row d-md-none">
+        <div class="text-center col-md-11">
+          <h2 id="titulo_sec_m">Secretaría de Control Urbano y Vivienda</h2>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+          <img class="col-6" src="../../../assets/images/marco.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div *ngIf="mostrar" class="row  d-flex justify-content-center">
+  <div class="d-flex justify-content-center">
+    <div class="col-sm-1 col-md-3 my-5">
+      
+
+      <!--para PC-->
+      <div class="d-none d-md-block">
+        <h1 id="titulo_sec">Nuestros servicios:</h1>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-outline-primary btn-lg" >
+                <h3><i class="fas fa-user-circle"></i> Mis Trámites</h3>
+              </button>
+            </div>
+          </div>
+
+          <div class="col-sm-1 col-md-6">
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-outline-primary btn-lg" routerLink="/requisitos">
+                <h3><i class="fa-solid fa-file-lines"></i> Requisitos</h3>
+              </button>
+            </div>
+          </div>
+
+          <div class="col-sm-1 col-md-6 mt-3">
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-outline-primary btn-lg">
+                <h3><i class="fa-solid fa-question"></i> Consultas</h3>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <!--para movil-->
+      <div class="row d-md-none d-flex justify-content-center mt-2">
+        <div class="col-10">
+          <h3>Nuestros servicios:</h3>
+        </div>
+        
+        <div class="col-10 mt-2">
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-primary btn-lg">
+              <h3><i class="fas fa-user-circle"></i> Mis Trámites</h3>
+            </button>
+          </div>
+        </div>
+
+        <div class="col-10 my-3">
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-primary btn-lg" routerLink="/requisitos">
+              <h3><i class="fa-solid fa-file-lines"></i> Requisitos</h3>
+            </button>
+          </div>
+        </div>
+
+        <div class="col-10">
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-primary btn-lg">
+              <h3><i class="fa-solid fa-question"></i> Consultas</h3>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,164 @@
+<div *ngIf="divDistancia" class="row justify-content-center justify-content-md-center mt-3">
+  <div class="card col-11 col-lg-5 p-3 shadow">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-2 col-2">
+          <button type="button" id="btnRedondo" class="btn btn-primary shadow mx-1" routerLink="/menu"><i class="fas fa-arrow-left"></i></button>
+        </div>
+        <div class="col-lg-10 col-10">
+          <h4 class="card-title">Certificado distancia</h4>
+        </div>
+      </div>
+
+      <hr />
+      <div class="justify-content-md-center mt-3">
+        <div class="row">
+          <form [formGroup]="form">
+
+            <div class="row mt-1">
+              <div class="form-floating col-lg-6 col-12 mt-1">
+                <input type="text" formControlName="nombre" class="form-control" id="floatingInput" placeholder="cantidad" [disabled]="bandera">
+                <label *ngIf="form.get('nombre').untouched || form.get('nombre').valid" class="mx-2" for="floatingInput">nombre</label>
+                <label *ngIf="form.get('nombre').errors && form.get('nombre').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar nombre</label>
+              </div>
+
+              <div class="form-floating col-12 col-lg-6 mt-1">
+                <input type="number" formControlName="consecutivo" class="form-control col-lg-12" id="floatingInput" placeholder="consecutivo">
+                <label *ngIf="form.get('consecutivo').untouched || form.get('consecutivo').valid" class="mx-2" for="floatingInput">consecutivo</label>
+                <label *ngIf="form.get('consecutivo').errors && form.get('consecutivo').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar consecutivo</label>
+              </div>
+              <!--<div class="col-lg-1 py-2 d-none d-md-block" style="position:absolute;left:83%;">
+                <button type="button" id="btnRedondo" class="btn btn-primary shadow mx-1" (click)="Buscar()"><i class="fas fa-search"></i></button>
+              </div>
+              <div class="col-2 py-2 d-block d-md-none" style="position:absolute;left:75%;">
+                <button type="button" id="btnRedondo" class="btn btn-primary shadow mx-1" (click)="Buscar()"><i class="fas fa-search"></i></button>
+              </div>-->
+            </div>
+
+            <div class="form-floating mt-1">
+              <input type="text" formControlName="direccion" class="form-control col-lg-12" id="floatingInput" placeholder="dirección del predio">
+              <label *ngIf="form.get('direccion').untouched || form.get('direccion').valid" for="floatingInput">dirección del predio</label>
+              <label *ngIf="form.get('direccion').errors && form.get('direccion').touched" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar dirección predio</label>
+            </div>
+
+            <div class="row">
+              <div class="form-floating col-12 col-lg-6 mt-1">
+                <input type="text" formControlName="lugar" class="form-control col-lg-12" id="floatingInput" placeholder="centro educativo cercano">
+                <label *ngIf="form.get('lugar').untouched || form.get('lugar').valid" class="mx-2" for="floatingInput">centro educativo cercano</label>
+                <label *ngIf="form.get('lugar').errors && form.get('lugar').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> centro educativo cercano</label>
+              </div>
+
+              <div class="form-floating col-12 col-lg-6 mt-1">
+                <input type="number" formControlName="distancia" class="form-control col-lg-12" id="floatingInput" placeholder="distancia">
+                <label *ngIf="form.get('distancia').untouched || form.get('distancia').valid" class="mx-2" for="floatingInput">distancia</label>
+                <label *ngIf="form.get('distancia').errors && form.get('distancia').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar distancia</label>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="form-floating col-12 col-lg-6 mt-1">
+                <input type="number" formControlName="cedula" class="form-control col-lg-12" id="floatingInput" placeholder="identificacion del solicitante">
+                <label *ngIf="form.get('cedula').untouched || form.get('cedula').valid" class="mx-2" for="floatingInput">identificacion del solicitante</label>
+                <label *ngIf="form.get('cedula').errors && form.get('cedula').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar identificacion</label>
+              </div>
+
+              <div class="form-floating col-12 col-lg-6 mt-1">
+                <input type="number" formControlName="telefono" class="form-control col-lg-12" id="floatingInput" placeholder="teléfono">
+                <label *ngIf="form.get('telefono').untouched || form.get('telefono').valid" class="mx-2" for="floatingInput">teléfono</label>
+                <label *ngIf="form.get('telefono').errors && form.get('telefono').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar teléfono</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-floating col-12 col-lg-6 mt-1 my-1">
+                <input type="email" formControlName="correo" class="form-control col-lg-12" id="floatingInput" placeholder="opcional correo">
+                <label class="mx-2" for="floatingInput">correo</label>
+              </div>
+
+              <div class="form-floating col-12 col-lg-6 mt-1">
+                <input type="text" formControlName="catastral" class="form-control col-lg-12" id="floatingInput" placeholder="número catastral del predio">
+                <label *ngIf="form.get('catastral').untouched || form.get('catastral').valid" class="mx-2" for="floatingInput">número catastral del predio</label>
+                <label *ngIf="form.get('catastral').errors && form.get('catastral').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar número catastral</label>
+              </div>
+              <div *ngIf="form.get('catastral').errors && form.get('catastral').touched" class="col-lg-12" style="color:red">
+                <span id="error" class="help-block">Debe ingresar 20 o 30 caracteres - solo números</span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-floating col-lg-6 col-12 mt-1">
+                <select class="form-select" formControlName="IdTipoSuelo" id="floatingSelect">
+                  <option *ngIf="!spinTS" value='0'>seleccione..</option>
+                  <option *ngIf="spinTS" value='0'>cargando datos..</option>
+                  <option *ngFor="let list of listaTipoSuelo; let i = index;" value={{list.IdTipoSuelo}}>{{list.Tipo}}</option>
+                </select>
+                <label class="mx-2" for="floatingSelect">tipo suelo</label>
+              </div>
+
+              <div class="form-floating col-lg-6 col-12 mt-1">
+                <input type="date" formControlName="FechaSol" class="form-control" id="floatingInput" placeholder="">
+                <label *ngIf="form.get('FechaSol').untouched || form.get('FechaSol').valid" class="mx-2" for="floatingInput">fecha</label>
+                <label *ngIf="form.get('FechaSol').errors && form.get('FechaSol').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar fecha</label>
+              </div>
+            </div>
+
+
+            <div class="btn-group col-12 col-lg-12 mx-auto mt-3" role="group">
+              <button type="button" class="btn btn-primary" routerLink="/menu">
+                <i class="fas fa-times"></i> Salir
+              </button>
+
+              <button type="submit" [disabled]="form.invalid" data-bs-toggle="modal" data-bs-target="#ModalGuardar" class="btn btn-primary">
+                <span *ngIf="spinG" class="spinner-border spinner-border-sm"></span>
+                <i *ngIf="!spinG" class="fas fa-check"></i> Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--modal para busqueda de solicitudes-->
+<div *ngIf="divSolicitud">
+  <app-solicitudes [IdSolicitudinput]="IdSolicitud" (notifySolicitud)="Recibemensaje($event)" (notifyObjeto)="RecibeObjeto($event)" (notifySalir)="RecibeSalida($event)" (notifyImprime)="RecibeImprime($event)"></app-solicitudes>
+</div>
+
+
+<!--modal para modificar radicados-->
+<div *ngIf="divCertificados">
+  <app-certificados [objHistorial]="objHistorial" (notifySalir)="RecibeSalida($event)"></app-certificados>
+</div>
+
+
+
+
+
+
+<!-- Modal GUARDAR -->
+<div class="modal fade" id="ModalGuardar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Alerta</h5>
+      </div>
+      <div class="modal-body">
+        <p>Desea guardar el registro?</p>
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group col-12 col-lg-12 mx-auto mt-3" role="group">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+          <button type="button" class="btn btn-primary" (click)="Guardar()" data-bs-dismiss="modal">
+            <span *ngIf="spinG" class="spinner-border spinner-border-sm"></span>
+            <i *ngIf="!spinG" class="fas fa-check"></i> Aceptar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

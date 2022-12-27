@@ -1,0 +1,97 @@
+#marco {
+  position: absolute;
+  left: -0.49%;
+  right: 50%;
+  top: 42.29%;
+  bottom: 2.54%;
+}
+
+#circulo1 {
+  position: absolute;
+  right: -8.01%;
+  top: -7.62%;
+  bottom: 39.26%;
+  z-index:-1;
+}
+
+#titulo_sec {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+  font-style: normal;
+  font-size: 33px;
+  color: #0145B2;
+}
+
+#titulo_sec_m {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+  font-style: normal;
+  color: #0145B2;
+}
+
+#titulo_al {
+  font-style: normal;
+  font-size: 45px;
+}
+
+#titulo {
+  margin-top:10%;
+}
+
+#bandera {
+  box-shadow: 2px 2px 0px -1px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  width: 50px;
+  height: auto;
+}
+#bandera_m {
+  box-shadow: 2px 2px 0px -1px rgba(0, 0, 0, 0.25);
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+}
+
+/*.button {
+  width: 500px;
+  height: auto;
+}*/
+
+.btn-outline-primary {
+  color: #FF0B13;
+  border-color: #FF0B13;
+}
+
+  .btn-outline-primary:hover {
+    color: #FFFFFF;
+    background: #FF0B13;
+  }
+
+.btn-primary {
+  background: #FF0B13;
+  border-color: #FF0B13;
+  color: #FFFFFF;
+}
+
+  .btn-primary:hover {
+    color: #FFFFFF;
+    background: #FF0B13;
+  }
+
+
+
+
+
+
+
+
+
+
+
+/*.card {
+  width: 300px;
+  height: auto;
+}
+
+#fila {
+background-color:red;
+}*/

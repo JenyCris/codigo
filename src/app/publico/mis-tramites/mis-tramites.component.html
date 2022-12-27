@@ -1,0 +1,184 @@
+<div class="row justify-content-md-center justify-content-center mt-3">
+  <div class="card col-11 col-lg-6 p-3 shadow">
+
+    <div class="card-body">
+      <div class="row">
+        <h4 class="card-title">Mis Trámites</h4>
+        <h6 class="card-title">{{cliente}}</h6>
+      </div>
+
+      <hr />
+      <div class="justify-content-md-center justify-content-center mt-3">
+
+        <!--cuerpo de la tarjeta-->
+
+        <div class="row">
+          <div class="col-12 col-lg-6 my-1">
+            <label class="form-label-sm">Identificación del solicitante</label>
+            <div class="input-group col-lg-6">
+              <input type="text" class="form-control form-control-sm text-center col-lg-8" placeholder="número cédula" [(ngModel)]="miCedula" (keydown)="Buscar($event)">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon1" (click)="BuscarHistorial()"><i class="fas fa-search"></i></button>
+            </div>
+          </div>
+          
+
+          <!--<div class="col-12 col-lg-6 my-1">
+            <label class="form-label-sm">Estado de solicitud</label>
+            <select class="form-select form-select" id="ProcesoSelect" [(ngModel)]="objEstados.IdEstado" (change)="CargarHistorial()">
+              <option *ngIf="!spinE" value='0'>seleccione..</option>
+              <option *ngIf="spinE" value='0'>cargando datos..</option>
+              <option *ngFor="let list of listEstados;let i = index;" value={{list.IdEstado}}>{{list.NombreEstado}}</option>
+            </select>
+          </div>-->
+        </div>
+
+
+
+        <div class="justify-content-md-center justify-content-center mt-3">
+          <div class="row justify-content-md-center justify-content-center">
+
+            <!--tabla-->
+            <div class="col-12 col-lg-12 mt-3">
+              <div class="table-responsive d-none d-md-flex">
+                <table class="table table-sm ">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">Fecha</th>
+                      <th scope="col" class="text-center">#Recibido</th>
+                      <th scope="col" class="text-center">Asunto</th>
+                      <th scope="col" class="text-center">Estado</th>
+                      <th scope="col" class="text-center"><i class="fa-solid fa-arrow-pointer"></i></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr *ngIf="spinH">
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                    </tr>
+
+
+                    <tr *ngFor="let item of listaHistorialTramites; let i = index;" [ngClass]="item.css" (click)="Seleccion(item)" data-bs-toggle="modal" data-bs-target="#opciones">
+                      <td class="text-center">{{item.Fecha | date: 'medium'}}</td>
+                      <td class="text-center">{{item.IdTramite}}</td>
+                      <td class="text-center">{{item.NombreSolicitud}}</td>
+                      <td class="text-center">{{item.NombreEstado}}</td>
+                      <td class="text-center">
+                        <span *ngIf="spinI" class="spinner-border spinner-border-sm"></span>
+                        <i *ngIf="!spinI" class="fa-solid fa-arrow-pointer"></i>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!--para movil-->
+            <div class="mt-3 d-md-none">
+              <ul *ngIf="spinH" class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <div class="spinner-grow text-primary" role="status">
+                    <span class="visually-hidden"></span>
+                  </div>
+                </li>
+              </ul>
+              <ul class="list-group list-group-flush" *ngFor="let item of listaHistorialTramites; let i = index;">
+                <li *ngIf="!spinH" class="list-group-item">
+                  <div class="row">
+                    <button type="button" class={{item.css2}} (click)="Seleccion(item)" data-bs-toggle="modal" data-bs-target="#opciones" aria-current="true">
+                      <div class="row">
+                        <div class="col-2">
+                          <h2><span *ngIf="spinI" class="spinner-border spinner-border-sm"></span></h2>
+                          <h2><i *ngIf="!spinI" class="fa-solid fa-arrow-pointer" style="color:var(--secondary);"></i></h2>
+                        </div>
+                        <div class="col-10">
+                          <label class="form-check-label" for="flexSwitchCheckDefault"><h5>{{item.NombreSolicitud}}</h5></label>
+                          <h6>estado: {{item.NombreEstado}}</h6>
+                          <h6>fecha: {{item.Fecha | date: 'medium'}}</h6>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="class=col-12 col-lg-12 my-2">
+        <div class="btn-group col-12 col-lg-12" role="group">
+          <button type="button" class="btn btn-primary" routerLink="/inicio">
+            <i class="fas fa-times"></i> Salir
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<div class="modal" id="ModalBorrar" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Atención</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Desea eliminar el registro?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="anular()" data-bs-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+
+<!-- Modal opciones -->
+<div class="modal fade" id="opciones" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="list-group">
+          <button type="button" class="list-group-item list-group-item-action" (click)="ImprimirMovil()" data-bs-dismiss="modal">Imprimir</button>
+          <button type="button" class="list-group-item list-group-item-action" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ModalBorrar">Borrar</button>
+          <button type="button" class="list-group-item list-group-item-action" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal deshabilitar -->
+<div class="modal fade" id="ModalBorrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Alerta</h5>
+      </div>
+      <div class="modal-body">
+        <p>Desea eliminar la solicitud?</p>
+      </div>
+      <div class="modal-footer">
+        <div class="btn-group col-12 col-lg-12 mx-auto mt-3" role="group">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+          <button type="button" class="btn btn-primary" (click)="anular()" data-bs-dismiss="modal">
+            <span *ngIf="spinG" class="spinner-border spinner-border-sm"></span>
+            <i *ngIf="!spinG" class="fas fa-check"></i> Aceptar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

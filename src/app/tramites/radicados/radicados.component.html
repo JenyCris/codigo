@@ -1,0 +1,132 @@
+
+<div *ngIf="!nuevo" class="row justify-content-md-center mt-3">
+  <div class="card col-sm-6 col-lg-8 p-3 shadow">
+
+    <div class="card-body">
+      <div class="row">
+        <h4 class="card-title">Radicados</h4>
+      </div>
+
+      <hr />
+      <div class="justify-content-md-center mt-3">
+        <div class="row">
+
+          <!--cuerpo de la tarjeta-->
+
+          <div class="col-sm-6 my-1 input-group">
+            <span class="input-group-text col-sm-4">Nombre</span>
+            <input type="text" class="form-control text-center col-sm-8" placeholder="buscar" [(ngModel)]="Cedula">
+          </div>
+
+          <div class="col-sm-6 my-1 input-group">
+            <span class="input-group-text col-sm-4">Desde</span>
+            <input type="date" class="form-control text-center col-sm-8" [(ngModel)]="FechaInicial" (change)="HistorialRadicado()">
+          </div>
+
+          <div class="col-sm-6 my-1 input-group">
+            <button type="button" class="btn btn-primary btn-block" (click)="NuevoRadicado()"><i class="fas fa-plus"></i> Nuevo radicado</button>
+          </div>
+
+          <div class="col-sm-6 my-1 input-group">
+            <span class="input-group-text col-sm-4">Hasta</span>
+            <input type="date" class="form-control text-center col-sm-8" [(ngModel)]="FechaFinal" (change)="HistorialRadicado()">
+          </div>
+        </div>
+
+        <div class="justify-content-md-center mt-3">
+          <div class="row">
+
+            <!--tabla-->
+            <div class="col-sm-12 mt-3">
+              <div class="table-responsive">
+                <table id="" class="table table-striped table-bordered table-sm">
+                  <thead class="tablaCabeza" id="">
+                    <tr>
+                      <th class="text-center">Radicado/in</th>
+                      <th class="text-center">Radicado/ext</th>
+                      <th class="text-center">Fecha</th>
+                      <th class="text-center">Usuario</th>
+                      <th class="text-center">Solicitud</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr *ngIf="spinR">
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                      <td class="text-center"><span class="spinner-border spinner-border-sm"></span></td>
+                    </tr>
+
+
+                    <tr *ngFor="let item of listaRadicado; let i = index;" data-toggle="modal" data-target="#ModalBorrar" (click)="SeleccionB(i)">
+                      <td class="text-center">{{item.IdRadicado}}</td>
+                      <td class="text-center">{{item.RadicadoGeneral}}</td>
+                      <td class="text-center">{{item.Fecha | date: 'medium'}}</td>
+                      <td class="text-center">{{item.NombreCompleto}}</td>
+                      <td class="text-center">{{item.Concepto}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="nuevo" class="row justify-content-md-center mt-3">
+  <div class="card col-sm-1 col-lg-6 p-4 shadow">
+
+    <div class="card-body">
+      <h4 class="card-title">Nuevo Radicado</h4>
+      <hr />
+      <div class="justify-content-md-center mt-3">
+        <div class="row">
+
+          <div class="col-sm-12 my-1 input-group">
+            <span class="input-group-text col-sm-4">Fecha</span>
+            <input type="datetime-local" class="form-control text-center col-sm-8" [(ngModel)]="fecha" disabled>
+          </div>
+
+          <div class="col-sm-12 my-1 input-group">
+            <span class="input-group-text col-sm-4">Nombre del solicitante</span>
+            <input type="text" class="form-control text-center col-sm-8" placeholder="ingresar" [(ngModel)]="objRadicado.NombreCompleto">
+          </div>
+
+          <div class="col-sm-12 my-1 input-group">
+            <span class="input-group-text col-sm-4">Cédula del solicitante</span>
+            <input type="text" class="form-control text-center col-sm-8" placeholder="ingresar" [(ngModel)]="objRadicado.Cedula">
+          </div>
+
+          <div class="col-sm-12 my-1 input-group">
+            <span class="input-group-text col-sm-4">Radicado General</span>
+            <input type="text" class="form-control text-center col-sm-8" placeholder="ingresar" [(ngModel)]="objRadicado.RadicadoGeneral">
+          </div>
+
+          <div class="col-sm-12 my-1 input-group">
+            <span class="input-group-text col-sm-4">Concepto</span>
+            <input type="text" class="form-control text-center col-sm-8" placeholder="ingresar" [(ngModel)]="objRadicado.Concepto">
+          </div>
+
+        </div>
+        <div class="class=col-sm-12 my-1 d-flex flex-row-reverse">
+          <div class="btn-group col-sm-12 px-0">
+            <button type="button" class="btn btn-primary" (click)="Volver()"><i class="fas fa-arrow-left"></i> Volver</button>
+            <button type="button" class="btn btn-primary" (click)="Guardar()">
+              <span *ngIf="spinG" class="spinner-border spinner-border-sm"></span>
+              <i *ngIf="!spinG" class="fas fa-check"></i> Enviar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

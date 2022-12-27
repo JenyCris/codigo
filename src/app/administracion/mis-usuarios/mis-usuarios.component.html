@@ -1,0 +1,143 @@
+<!--lista de usuarios-->
+<div *ngIf="!divUsuario" class="row justify-content-center mt-3">
+  <div class="card col-11 col-lg-4 p-3 shadow">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-2 col-2">
+          <button type="button" class="btn btn-outline-primary" id="btnBarra" (click)="Nuevo()"><i class="fas fa-plus" style="font-size:1.5rem;"></i></button>
+        </div>
+        <div class="col-lg-7 col-6 d-flex d-flex align-items-center justify-content-center">
+          <h4 class="card-title">Lista de usuarios</h4>
+        </div>
+
+      </div>
+
+      <div class="justify-content-center mt-3">
+        <div class="row">
+          <div class="mt-3">
+            <ul *ngIf="spinP" class="list-group list-group-flush">
+              <li class="list-group-item">
+                <div class="spinner-grow text-primary" role="status">
+                  <span class="visually-hidden"></span>
+                </div>
+              </li>
+            </ul>
+            <ul class="list-group list-group-flush" *ngFor="let item of ListaUsuario; let i = index;">
+              <li *ngIf="!spinP" class="list-group-item">
+                <button type="button" class="list-group-item list-group-item-action" (click)="Capturar(item)" data-bs-toggle="modal" data-bs-target="#opciones" aria-current="true">
+                  <div class="row">
+                    <div class="col-3 col-lg-3 d-flex d-flex align-items-center justify-content-center">
+                      <h5><i class="fa-solid fa-face-smile" style="color:var(--secondary);"></i></h5>
+                    </div>
+                    <div class="col-9 col-lg-9">
+                      <label class="form-check-label" for="flexSwitchCheckDefault">
+                        <h6>{{item.NombreCompleto}}</h6>
+                      </label>
+                    </div>
+                  </div>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+
+          <div class="btn-group col-12 col-lg-12 mx-auto mt-3" role="group">
+            <button type="button" class="btn btn-primary" routerLink="/menu">
+              <i class="fas fa-times"></i> Salir
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="divUsuario" class="row justify-content-center mt-3">
+  <div class="card col-11 col-lg-4 p-3 shadow">
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-2 col-2">
+          <button type="button" class="btn btn-outline-primary" id="btnBarra" (click)="Volver()"><i class="fas fa-arrow-left" style="font-size:1.5rem;"></i></button>
+        </div>
+        <div class="col-lg-7 col-6 d-flex d-flex align-items-center justify-content-center">
+          <h4 class="card-title">Usuario</h4>
+        </div>
+        <div class="col-lg-3 col-4">
+
+        </div>
+      </div>
+      <hr />
+      <div class="justify-content-md-center mt-3">
+        <div class="row">
+
+          <!--cuerpo de la tarjeta-->
+          <form [formGroup]="form" (ngSubmit)="Guardar($event)">
+            <div class="form-floating mt-1">
+              <input type="text" formControlName="NombreCompleto" class="form-control" id="floatingInput" placeholder="dirección sede">
+              <label *ngIf="form.get('NombreCompleto').untouched || form.get('NombreCompleto').valid" class="mx-2" for="floatingInput">nombre usuario</label>
+              <label *ngIf="form.get('NombreCompleto').errors && form.get('NombreCompleto').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar nombre usuario</label>
+            </div>
+
+
+            <div class="form-floating mt-1">
+              <input type="email" formControlName="Cedula" class="form-control" id="floatingInput" placeholder="cedula">
+              <label *ngIf="form.get('Cedula').untouched || form.get('Cedula').valid" class="mx-2" for="floatingInput">cedula</label>
+              <label *ngIf="form.get('Cedula').errors && form.get('Cedula').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar cedula</label>
+            </div>
+
+            <div class="form-floating mt-1">
+              <input type="email" formControlName="Telefono" class="form-control" id="floatingInput" placeholder="telefono">
+              <label *ngIf="form.get('Telefono').untouched || form.get('Telefono').valid" class="mx-2" for="floatingInput">telefono</label>
+              <label *ngIf="form.get('Telefono').errors && form.get('Telefono').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar telefono</label>
+            </div>
+
+            <div class="row">
+              <div class="form-floating col-lg-6 mt-1">
+                <input type="text" formControlName="Usuario" class="form-control" id="floatingInput" placeholder="nombre de usuario">
+                <label *ngIf="form.get('Usuario').untouched || form.get('Usuario').valid" class="mx-2" for="floatingInput">nombre de usuario</label>
+                <label *ngIf="form.get('Usuario').errors && form.get('Usuario').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar usuario</label>
+              </div>
+
+              <div class="form-floating col-lg-6 mt-1">
+                <input type="text" formControlName="Clave" class="form-control" id="floatingInput" placeholder="contraseña">
+                <label *ngIf="form.get('Clave').untouched || form.get('Clave').valid" class="mx-2" for="floatingInput">contraseña</label>
+                <label *ngIf="form.get('Clave').errors && form.get('Clave').touched" class="mx-2" for="floatingInput" style="color:red"><i class="fa-solid fa-triangle-exclamation"></i> ingresar contraseña</label>
+              </div>
+            </div>
+
+            <div class="btn-group col-12 col-lg-12 mx-auto mt-3" role="group">
+              <button type="button" class="btn btn-primary" (click)="Volver()">
+                <i class="fas fa-times"></i> Cancelar
+              </button>
+              <button type="submit" [disabled]="form.invalid" class="btn btn-primary">
+                <span *ngIf="spinG" class="spinner-border spinner-border-sm"></span>
+                <i *ngIf="!spinG" class="fas fa-check"></i> Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal opciones -->
+<div class="modal fade" id="opciones" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="list-group">
+          <button type="button" class="list-group-item list-group-item-action" (click)="Editar()" data-bs-dismiss="modal"><i class="fa-solid fa-pencil"></i> Editar</button>
+          <!--<button type="button" class="list-group-item list-group-item-action" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#ModalBorrar"><i class="fas fa-trash-alt"></i> Borrar</button>-->
+          <button type="button" class="list-group-item list-group-item-action" data-bs-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+.btn-primary, .card-title, label, th, h5, a {
+  font-family: 'Poppins', sans-serif;
+}
+
+.btn-primary {
+  background: #FF0B13;
+  border-color: #FF0B13;
+  color: #FFFFFF;
+}
+
+.btn-milista {
+  border: none;
+}
+
+  .btn-primary:hover {
+    color: #FF0B13;
+    background: #FFFFFF;
+  }
+
+label {
+  color: #0145B2;
+}
+
+.card-title {
+  color: #FF0B13;
+}
+
+td {
+  font-size: 0.8rem;
+}
+
+
+#btnt {
+  background-color: #E2E8F0;
+  border-color: white;
+  color: #455A64;
+}
+
+  #btnt:hover {
+    background-color: #455A64;
+    border-color: white;
+    color: #E2E8F0;
+  }

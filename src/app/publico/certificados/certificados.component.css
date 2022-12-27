@@ -1,0 +1,25 @@
+.btn-primary, .card-title, label, th, p, h5, .card-text {
+  font-family: 'Poppins', sans-serif;
+  color: #0145B2;
+  
+}
+
+.btn-primary {
+  background: #FF0B13;
+  border-color: #FF0B13;
+  color: #FFFFFF;
+}
+
+  .btn-primary:hover {
+    color: #FF0B13;
+    background: #FFFFFF;
+  }
+
+label{
+  color: #0145B2;
+}
+
+.card-title{
+  color: #FF0B13;
+}
+

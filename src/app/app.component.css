@@ -1,0 +1,19 @@
+#btnMenu {
+  border-color: #F8EFE1;
+}
+
+#marco {
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  width: 300px;
+  height: auto;
+}
+
+  .card:hover {
+    background-color: #a98274;
+    border-color: white;
+    color: #E2E8F0;
+  }

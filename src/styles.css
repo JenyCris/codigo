@@ -1,0 +1,195 @@
+/* estilos generales*/
+
+
+:root {
+  --primary: #FF0B13;
+  --secondary: #0145B2;
+  --white: #ffffff;
+  --fondo: #edf2f7;
+  
+}
+
+.ok {
+  background: #059c0c;
+  color: white;
+}
+
+.error {
+  background: #FF0B13;
+  color: white;
+}
+
+
+
+html, body {
+  height: 100%;
+}
+
+  body.normal {
+    margin: 0;
+    
+  }
+
+
+.navbar {
+  font-family: 'Poppins';
+  font-style: normal;
+}
+
+
+
+/*menu principal*/
+#pikoro {
+  background-color: #F8EFE1;
+  color: #FF0B13;
+}
+
+#mi_lista:hover {
+  background-color: #a98274;
+  color: white;
+}
+
+
+.dropdown-item:hover {
+  background-color: #a98274;
+  color: white;
+}
+
+.span {
+  background-color: #a98274;
+}
+
+.form-control1 {
+  box-shadow: 3px 4px 0px 0px rgba(237,242,247,1);
+}
+
+
+
+/*card*/
+.card {
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+.card-header {
+  background-color: #a98274;
+  color: white;
+}
+
+
+/*modales*/
+.modal fade {
+  border-radius: 10px 10px 10px 10px;
+}
+
+
+.btn2 {
+  background-color: #FFC107;
+  border-color: #AC6651;
+  color: white;
+  border-radius: 6px 6px 6px 6px;
+  width: 135px;
+}
+
+/*encabezados de tablas*/
+.tablaCabeza {
+  background-color: #a98274;
+  color: white;
+  /*background-color: #B0BEC5;*/
+  /*color: #455A64;*/
+}
+
+#btnt {
+  background-color: #b0bec5;
+  /*background-color: #E2E8F0;*/
+  border-color: white;
+  /*color: #455A64;*/
+  color: #102027;
+}
+
+  #btnt:hover {
+    background-color: #455A64;
+    border-color: white;
+    color: #E2E8F0;
+  }
+
+#btnRedondo {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  
+
+  width: 33px;
+  height: 33px;
+  padding: 0px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  /*line-height: 1.42857;*/
+}
+
+  #btnRedondo:hover {
+    background-color: #FFFFFF;
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+#btnRedondoE {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  width: 50px;
+  height: 50px;
+  padding: 0px 0px;
+  border-radius: 30px;
+  text-align: center;
+  font-size: 12px;
+
+  /*line-height: 1.42857;*/
+}
+
+  #btnRedondoE:hover {
+    background-color: #FFFFFF;
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+#btnBarra {
+  border-color: #FFF;
+  color: #FF0B13;
+}
+
+  #btnBarra:hover {
+    background: #FF0B13;
+    color: #FFF;
+  }
+
+html, body {
+  height: 100%;
+}
+
+
+
+body {
+  /*background-image: url('../src/assets/fondo.jpeg');*/
+  /*background: #F8EFE1;*/
+  background-color: #ececec;
+  position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+html, body { height: 100%; }
+
+/*pantalla param celulares*/
+/*@media  screen and (max-width: 576px) {
+    body {
+      zoom: 100%;
+    }
+  }*/
+
+/*pantallas param PC*/
+/*@media only screen and (min-width: 1024px) and (max-width: 2560px) {
+  body {
+    zoom: 60%;
+  }
+}*/

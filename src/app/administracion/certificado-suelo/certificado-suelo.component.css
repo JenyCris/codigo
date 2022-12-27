@@ -1,0 +1,33 @@
+.btn-primary, .card-title, label, th, td, h6 {
+  font-family: 'Poppins';
+}
+
+.card-title {
+  font-family: 'Poppins', sans-serif;
+  color: var(--primary);
+}
+
+/*Botones*/
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #FFFFFF;
+}
+
+  .btn-primary:hover {
+    background-color: #FFFFFF;
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+
+label {
+  font-size: small;
+  font-family: 'Poppins', sans-serif;
+  color: var(--secondary);
+}
+
+.card {
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
+  box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.5);
+}

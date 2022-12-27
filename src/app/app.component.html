@@ -1,0 +1,11 @@
+
+
+
+
+<!--cuerpo de presentacion-->
+<div *ngIf="presentacion">
+  <app-inicio (notifyInicio)="recibeMensaje($event)"></app-inicio>
+</div>
+
+<router-outlet></router-outlet>
+<!--<router-outlet *ngIf="!evento"></router-outlet>-->

@@ -1,0 +1,61 @@
+<!--lista de componentes-->
+
+
+<div class="row d-md-flex d-none justify-content-center mt-5">
+ 
+  <div class="col-lg-10 mt-5">
+    <div class="row d-flex justify-content-center">
+      <button type="button" class="btn btn-default d-md-flex justify-content-md-center d-flex justify-content-center align-items-center mx-2" *ngFor="let listCompo of arregloComponentes" routerLink="{{listCompo.Ruta}}">
+        <div class="row">
+          <div class="col-12 col-md-12  d-md-flex justify-content-md-center d-flex justify-content-center align-items-center">
+            <div class="col-md-12">
+              <div class="col-md-12 d-md-flex justify-content-md-center d-flex justify-content-center">
+                <h2 class="text-center my-3"><i class={{listCompo.Icono}}></i></h2>
+              </div>
+              <div class="col-md-12 d-md-flex justify-content-md-center d-flex justify-content-center">
+                <h6 class="card-title text-center">{{listCompo.NombreComponente}}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </button>
+
+      <button type="button" class="btn btn-default d-md-flex justify-content-md-center d-flex justify-content-center align-items-center mx-2" routerLink="/inicio">
+        <div class="row">
+          <div class="col-12 col-md-12  d-md-flex justify-content-md-center d-flex justify-content-center align-items-center">
+            <div class="col-md-12">
+              <div class="col-md-12 d-md-flex justify-content-md-center d-flex justify-content-center">
+                <h2 class="text-center my-3"><i class="fas fa-times"></i></h2>
+              </div>
+              <div class="col-md-12 d-md-flex justify-content-md-center d-flex justify-content-center">
+                <h6 class="card-title text-center">Salir</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </button>
+
+    </div>
+  </div>
+</div>
+
+
+<!--pantallas celular-->
+<div class="row d-flex d-md-none justify-content-center mt-5">
+  <div class="d-flex justify-content-center my-5">
+    <img class="col-10" src="../../../assets/images/marco.svg">
+  </div>
+
+  <div class="col-10">
+    <div class="row d-flex justify-content-center">
+      <div class="list-group">
+        <button type="button" class="list-group-item list-group-item-action my-1" *ngFor="let listCompo of arregloComponentes; let i = index;" routerLink="{{listCompo.Ruta}}" style="background-color: #FF0B13; color: white;">
+          <h3>{{listCompo.NombreComponente}}</h3>
+        </button>
+        <button type="button" class="list-group-item list-group-item-action" routerLink="/inicio" style="background-color: #FF0B13; color: white;">
+          <h3>Salir</h3>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
